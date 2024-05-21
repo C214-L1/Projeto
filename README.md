@@ -38,5 +38,5 @@
 
 **OBS**: Pode haver adição de algumas tecnologias caso sejam demandadas durante o desenvolvimento do sistema (WebSockets, por exemplo)
 
-
-
+ - **Link para o Figma**:
+   - https://www.figma.com/design/OiRJPBhmdkYuTsNDNxJfNj/C214?node-id=0-1&t=MTvbCzhKibWAhsjg-0

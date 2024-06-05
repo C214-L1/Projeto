@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 import logo from "../../../public/icon.png";
-import texture from "../../../public/texture.png";
 import { Montserrat_Alternates } from "next/font/google";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { FormEvent, useState } from "react";
+import axios from "axios";
 
 const montserratAlternates = Montserrat_Alternates({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -11,6 +13,21 @@ const montserratAlternates = Montserrat_Alternates({
 });
 
 export default function Login() {
+  const [user, setUser] = useState<string>();
+  const [password, setPassword] = useState<string>();
+
+  function onSubmitLoginEvent(event: FormEvent) {
+    event.preventDefault();
+
+    axios
+      .post("http://localhost:7777/login", {
+        email: user,
+        password,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className="h-screen w-screen bg-zinc-100 flex items-center justify-center">
       <section className="px-24 py-8 h-full flex-1">
@@ -35,25 +52,36 @@ export default function Login() {
                 Digite seu e-mail ou celular e senha para acessar sua conta
               </p>
             </div>
-            <form action="" className="w-full flex flex-col mt-[72px]">
+            <form
+              onSubmit={onSubmitLoginEvent}
+              className="w-full flex flex-col mt-[72px]"
+            >
               <label htmlFor="" className="text-black text-base">
                 Email ou celular
-                <span className="text-[#E21D1D] ml-0.5">*</span>
+                <span title="Obrigatório" className="text-[#E21D1D] ml-0.5">
+                  *
+                </span>
               </label>
               <input
+                required
                 className="bg-[#8696AD] mt-1.5 mb-6 bg-opacity-[0.12] rounded-lg placeholder:text-xs placeholder:text-[#A6A6A6] outline-none text-[#A6A6A6] text-xs py-3 px-4 w-full"
                 type="text"
                 placeholder="Digite seu e-mail ou celular"
+                onChange={(e) => setUser(e.currentTarget.value)}
               />
 
               <label htmlFor="" className="text-black text-base">
                 Senha
-                <span className="text-[#E21D1D] ml-0.5">*</span>
+                <span title="Obrigatório" className="text-[#E21D1D] ml-0.5">
+                  *
+                </span>
               </label>
               <input
+                required
                 className="bg-[#8696AD] mt-1.5 bg-opacity-[0.12] rounded-lg placeholder:text-xs placeholder:text-[#A6A6A6] outline-none text-[#A6A6A6] text-xs py-3 px-4 w-full"
                 type="password"
                 placeholder="Digite sua senha"
+                onChange={(e) => setPassword(e.currentTarget.value)}
               />
               <Link
                 href={"#"}
@@ -64,7 +92,7 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="flex items-center justify-center w-full py-4 rounded-md bg-gradient-to-r from-[#E21D1D] to-[#3B2D2D] mt-12"
+                className="flex items-center justify-center gap-1.5 w-full py-4 rounded-md bg-gradient-to-r from-[#E21D1D] to-[#3B2D2D] mt-12"
               >
                 <span className="font-semibold text-xl leading-6">ENTRAR</span>
                 <ArrowRight size={16} />

@@ -4,7 +4,7 @@
  - **Login**:
    - Como usuário
  - **Registro**:
-   - Registrar usuário com e-mail ou telefone
+   - Registrar usuário com e-mail
  - **Página com listagem de produtos**:
    - Produtos populares
    - Ofertas

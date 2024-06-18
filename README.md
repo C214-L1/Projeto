@@ -14,8 +14,6 @@
    - Quantidade
    - Adicionar ao carrinho
    - Descrição
-   - Avaliações
-     - Adicionar avaliação (somente para usuários autenticados)
  - **Carrinho**:
    - Possibilidade de excluir um item
    - Possibilidade de adicionar mais itens

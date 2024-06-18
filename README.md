@@ -3,7 +3,6 @@
 ### Funcionalidades:
  - **Login**:
    - Como usuário
-   - Como administrador (que poderá cadastrar as peças)
  - **Registro**:
    - Registrar usuário com e-mail ou telefone
  - **Página com listagem de produtos**:

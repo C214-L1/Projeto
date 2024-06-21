@@ -3,9 +3,8 @@
 ### Funcionalidades:
  - **Login**:
    - Como usuário
-   - Como administrador (que poderá cadastrar as peças)
  - **Registro**:
-   - Registrar usuário com e-mail ou telefone
+   - Registrar usuário com e-mail
  - **Página com listagem de produtos**:
    - Produtos populares
    - Ofertas
@@ -15,8 +14,6 @@
    - Quantidade
    - Adicionar ao carrinho
    - Descrição
-   - Avaliações
-     - Adicionar avaliação (somente para usuários autenticados)
  - **Carrinho**:
    - Possibilidade de excluir um item
    - Possibilidade de adicionar mais itens

@@ -31,7 +31,7 @@ export default function Login() {
   return (
     <div className="h-screen w-screen bg-zinc-100 flex items-center justify-center">
       <section className="px-24 py-8 h-full flex-1">
-        <div className="w-full h-full flex flex-col items-center justify-center">
+        <div className="max-w-md mx-auto w-full h-full flex flex-col items-center justify-center">
           <div className="flex items-center justify-center gap-1.5 mb-40">
             <Image src={logo} alt="Logo" className="w-8 h-8 object-cover" />
             <h1
@@ -66,7 +66,7 @@ export default function Login() {
                 required
                 className="bg-[#8696AD] mt-1.5 mb-6 bg-opacity-[0.12] rounded-lg placeholder:text-xs placeholder:text-[#A6A6A6] outline-none text-[#A6A6A6] text-xs py-3 px-4 w-full"
                 type="text"
-                placeholder="Digite seu e-mail ou celular"
+                placeholder="Digite seu e-mail"
                 onChange={(e) => setUser(e.currentTarget.value)}
               />
 
@@ -83,12 +83,6 @@ export default function Login() {
                 placeholder="Digite sua senha"
                 onChange={(e) => setPassword(e.currentTarget.value)}
               />
-              <Link
-                href={"#"}
-                className="text-[10px] underline text-black self-end mt-1"
-              >
-                Esqueci a senha
-              </Link>
 
               <button
                 type="submit"
@@ -101,7 +95,10 @@ export default function Login() {
           </div>
           <span className="text-black flex items-center justify-center mt-auto">
             Não possui uma conta?
-            <Link href={"#"} className="underline text-[#E21D1D] ml-1.5">
+            <Link
+              href={"/register"}
+              className="underline text-[#E21D1D] ml-1.5"
+            >
               Crie uma agora!
             </Link>
           </span>

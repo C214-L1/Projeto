@@ -19,8 +19,6 @@
    - Possibilidade de adicionar mais itens
    - Possibilidade de usar cupons de desconto
    - Valor total do carrinho
- - **Checkout**:
-   - Realizar pagamento via cartão (utilização de um gateway de pagamento gratuito para fins de teste, como Stripe)
 
 ### Tecnologias:
  - **Frontend**:

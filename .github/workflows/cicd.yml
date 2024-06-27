@@ -24,6 +24,10 @@ jobs:
         working-directory: backend
         run: npm i
 
+      - name: Set up .env file
+        working-directory: backend
+        run: echo "DB_CONNECTION_STRING=${DB_CONNECTION_STRING}" >> .env
+
       - name: Run unit tests
         working-directory: backend
         run: npm run test

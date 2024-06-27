@@ -1,0 +1,26 @@
+name: CI-CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Running unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 16.20.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: "16.20.2"
+
+      - name: Install dependencies
+        working-directory: backend # Define o diretório de trabalho como 'backend'
+        run: npm i
+
+      - name: Run unit tests
+        working-directory: backend # Define o diretório de trabalho como 'backend'
+        run: npm run test

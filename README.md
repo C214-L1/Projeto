@@ -18,7 +18,6 @@
 - **Carrinho**:
   - Possibilidade de excluir um item
   - Possibilidade de adicionar mais itens
-  - Possibilidade de usar cupons de desconto
   - Valor total do carrinho
 
 ### Tecnologias:

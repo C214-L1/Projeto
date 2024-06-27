@@ -9,8 +9,6 @@ jobs:
   test:
     name: Running unit tests
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV_MONGODB_URI_CONNECTION: ${{ secrets.NODE_ENV_MONGODB_URI_CONNECTION }} # Referência à variável de ambiente do GitHub
 
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +24,7 @@ jobs:
 
       - name: Set up .env file
         working-directory: backend
-        run: echo "NODE_ENV_MONGODB_URI_CONNECTION=${NODE_ENV_MONGODB_URI_CONNECTION}" >> .env
+        run: echo "My variable is ${{ vars.NODE_ENV_MONGODB_URI_CONNECTION }}"
 
       - name: Run unit tests
         working-directory: backend

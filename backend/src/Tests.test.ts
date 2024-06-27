@@ -1,8 +1,12 @@
 import { describe, expect, afterAll } from "@jest/globals";
 import { app } from ".";
+import mongoose from "mongoose";
 
 describe("SETUP ENVIROMENT", () => {
-  afterAll(() => app.close());
+  afterAll((done) => {
+    mongoose.connection.close();
+    done();
+  });
 
   describe("POST /register", () => {
     it("should return 400 and message explaining error if email is missing", async () => {
@@ -49,7 +53,7 @@ describe("SETUP ENVIROMENT", () => {
         url: "/register",
         method: "POST",
         body: {
-          email: "novo_usuario_do_inatel@gec.inatel.br",
+          email: "novo_usuario_do_instagram@gec.inatel.br",
           password: "123456",
           name: {
             first: "Gabriel",

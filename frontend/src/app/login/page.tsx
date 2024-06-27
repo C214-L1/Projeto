@@ -6,6 +6,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FormEvent, useState } from "react";
 import axios from "axios";
+import { useAuthContext } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 const montserratAlternates = Montserrat_Alternates({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -15,6 +17,8 @@ const montserratAlternates = Montserrat_Alternates({
 export default function Login() {
   const [user, setUser] = useState<string>();
   const [password, setPassword] = useState<string>();
+  const authContext = useAuthContext();
+  const router = useRouter();
 
   function onSubmitLoginEvent(event: FormEvent) {
     event.preventDefault();
@@ -24,7 +28,14 @@ export default function Login() {
         email: user,
         password,
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        localStorage.setItem("token", res.data.message.token);
+        authContext?.setAuthenticationStatus({
+          isAuthenticated: true,
+          jwt: res.data.message.token,
+        });
+        router.push("/");
+      })
       .catch((err) => console.log(err));
   }
 

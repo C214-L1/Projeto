@@ -1,13 +1,11 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-export async function connectToMongo(){
-    const URL = process.env.NODE_ENV_MONGODB_URI_CONNECTION;
+export async function connectToMongo() {
+  const connection = await mongoose.connect(
+    "mongodb+srv://gabrielcosta:asdfg123456@cluster0.9onb1r7.mongodb.net/"
+  );
 
-    if(!URL) throw new Error("Error: MongoDB URI is invalid or doesnt exist")
+  if (!connection) throw new Error("Error: Couldn't connect to database");
 
-    const connection = await mongoose.connect(URL);
-
-    if(!connection) throw new Error("Error: Couldn't connect to database")
-
-    console.log("Connected to database")
+  console.log("Connected to database");
 }

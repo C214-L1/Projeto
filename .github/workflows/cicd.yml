@@ -22,10 +22,6 @@ jobs:
         working-directory: backend
         run: npm i
 
-      - name: Set up .env file
-        working-directory: backend
-        run: echo "My variable is ${{ vars.NODE_ENV_MONGODB_URI_CONNECTION }}"
-
       - name: Run unit tests
         working-directory: backend
         run: npm run test

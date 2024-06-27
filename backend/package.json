@@ -29,8 +29,8 @@
     "build": "tsc -p tsconfig.json",
     "start": "node index.js",
     "dev": "tsx watch --env-file=.env.local src/index.ts",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest --detectOpenHandles",
+    "test:watch": "jest --watch ",
     "populate": "tsx watch --env-file=.env.local src/lib/populateDB.ts"
   },
   "author": "",

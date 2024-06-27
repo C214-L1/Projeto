@@ -92,8 +92,8 @@ function CardItem({
     }
 
     const data = {
-      jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjp7ImZpcnN0IjoiR2FicmllbCIsImxhc3QiOiJDb3N0YSJ9LCJlbWFpbCI6ImdhYnJpZWwuY29zdDFhQGdlYy5pbmF0ZWwuYnIiLCJpYXQiOjE3MTk0MzgwNzAsImV4cCI6MTcxOTQ2Njg3MH0.Il8nS3m_-9n8x4Rzk_cZdlUMtnI2xnaBnkn9K1CcxCE",
-      amount: 2,
+      jwt: authContext?.authenticationStatus.jwt,
+      amount: 1,
       productId: id,
     };
 

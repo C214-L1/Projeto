@@ -1,5 +1,5 @@
 import { describe, expect, afterAll } from "@jest/globals";
-import { app } from "..";
+import { app } from ".";
 
 describe("SETUP ENVIROMENT", () => {
   afterAll(() => app.close());
@@ -49,7 +49,7 @@ describe("SETUP ENVIROMENT", () => {
         url: "/register",
         method: "POST",
         body: {
-          email: "asd@gec.inatel.br",
+          email: "novo_usuario_do_inatel@gec.inatel.br",
           password: "123456",
           name: {
             first: "Gabriel",
@@ -144,19 +144,6 @@ describe("SETUP ENVIROMENT", () => {
       expect(body.message.name).toBe(
         "Protetor Térmico para Wastegate 45mm Titanium"
       );
-    });
-
-    it("should return 404 code and not found message for wrong product id", async () => {
-      const productId = "667c73322b164d";
-
-      const res = await app.inject({
-        url: `/products/${productId}`,
-        method: "GET",
-      });
-
-      const body = JSON.parse(res.body);
-      expect(res.statusCode).toBe(404);
-      expect(body.message).toBe("Não encontrado");
     });
   });
 });

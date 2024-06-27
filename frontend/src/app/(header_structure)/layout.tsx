@@ -34,7 +34,10 @@ export default function HeaderLayout({ children }: { children: ReactNode }) {
       },
     })
       .then((res) => res.json())
-      .then((res) => setCartContent(res.message))
+      .then((res) => {
+        console.log(res.message);
+        setCartContent(res.message);
+      })
       .finally(() => setLoading(false));
   }, [authContext]);
 
@@ -97,39 +100,34 @@ export default function HeaderLayout({ children }: { children: ReactNode }) {
               ref={cartContentRef}
               className="data-[open='false']:hidden block absolute max-w-80 max-h-96 overflow-y-scroll z-50 left-1/2 top-[calc(100%+8px)] -translate-x-1/2 bg-white shadow-sm px-2 rounded-md border border-zinc-200"
             >
-              {cartContent.length == 0 && (
-                <span className="text-xs">Nenhum item no carrinho...</span>
-              )}
               {cartContent.length > 0 &&
                 cartContent.map((cartItem) => (
-                  <>
-                    <CartContentCard
-                      amount={cartItem.amount}
-                      image={cartItem.image}
-                      name={cartItem.name}
-                      key={cartItem.productId}
-                    />
-                    <div className="sticky bottom-0 pt-5 pb-2 bg-white">
-                      <div className="flex items-center justify-between sticky">
-                        <span className="text-black text-sm">Subtotal:</span>
-                        <span className="text-black text-sm">
-                          {new Intl.NumberFormat("pt-br", {
-                            style: "currency",
-                            currency: "BRL",
-                          }).format(
-                            cartContent.reduce(
-                              (acc, item) => acc + item.price * item.quantity,
-                              0
-                            )
-                          )}
-                        </span>
-                      </div>
-                      <button className="ml-auto mt-2 text-white py-1.5 px-2 text-xs flex items-center justify-center gap-2 rounded-md bg-gradient-to-tr from-[#E21D1D] to-[#3B2D2D] hover:brightness-125 transition-all duration-300">
-                        Comprar
-                      </button>
-                    </div>
-                  </>
+                  <CartContentCard
+                    amount={cartItem.quantity}
+                    image={cartItem.image}
+                    name={cartItem.name}
+                    key={cartItem.productId}
+                  />
                 ))}
+              <div className="sticky bottom-0 pt-5 pb-2 bg-white">
+                <div className="flex items-center justify-between sticky">
+                  <span className="text-black text-sm">Subtotal:</span>
+                  <span className="text-black text-sm">
+                    {new Intl.NumberFormat("pt-br", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(
+                      cartContent.reduce(
+                        (acc, item) => acc + item.price * item.quantity,
+                        0
+                      )
+                    )}
+                  </span>
+                </div>
+                <button className="ml-auto mt-2 text-white py-1.5 px-2 text-xs flex items-center justify-center gap-2 rounded-md bg-gradient-to-tr from-[#E21D1D] to-[#3B2D2D] hover:brightness-125 transition-all duration-300">
+                  Comprar
+                </button>
+              </div>
             </div>
           </div>
           {!authContext?.authenticationStatus.isAuthenticated && (

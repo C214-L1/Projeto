@@ -9,6 +9,9 @@ jobs:
   test:
     name: Running unit tests
     runs-on: ubuntu-latest
+    env:
+      DB_CONNECTION_STRING: ${{ secrets.NODE_ENV_MONGODB_URI_CONNECTION }} # Referência à variável de ambiente do GitHub
+
     steps:
       - uses: actions/checkout@v4
 
@@ -18,9 +21,9 @@ jobs:
           node-version: "16.20.2"
 
       - name: Install dependencies
-        working-directory: backend # Define o diretório de trabalho como 'backend'
+        working-directory: backend
         run: npm i
 
       - name: Run unit tests
-        working-directory: backend # Define o diretório de trabalho como 'backend'
+        working-directory: backend
         run: npm run test
